@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>FileHub - File Upload & Download</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container header-content">
+        <a href="#" class="logo">
+          <span class="logo-icon">F</span>
+          <span>FileHub</span>
+        </a>
+
+        <span class="header-label">File Management System</span>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Welcome Section -->
+      <section class="welcome-section">
+        <div>
+          <h1>File Manager</h1>
+          <p>Upload, preview and download your files easily.</p>
+        </div>
+      </section>
+
+      <!-- Dashboard -->
+      <section class="dashboard">
+        <div class="stat-card">
+          <div class="stat-icon image-icon">🖼️</div>
+          <div>
+            <p>Total Images</p>
+            <h2 id="totalImages">0</h2>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon file-icon">📁</div>
+          <div>
+            <p>Total Documents</p>
+            <h2 id="totalFiles">0</h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- Upload Section -->
+      <section class="upload-section">
+        <h2>Upload Files</h2>
+
+        <div class="upload-grid">
+          <!-- Image Upload -->
+          <div class="upload-card">
+            <div class="card-heading">
+              <div class="upload-icon image-icon">🖼️</div>
+              <div>
+                <h3>Upload Image</h3>
+                <p>Upload one image at a time</p>
+              </div>
+            </div>
+
+            <label for="imageInput" class="drop-area">
+              <span class="drop-icon">☁️</span>
+              <strong>Choose an image</strong>
+              <span>or click here to browse</span>
+              <small>JPG, JPEG, PNG, GIF, TIFF</small>
+              <small>Maximum size: 2 MB</small>
+            </label>
+
+            <input
+              type="file"
+              id="imageInput"
+              accept=".jpg,.jpeg,.png,.gif,.tiff"
+              hidden
+            />
+
+            <div id="imagePreview" class="preview-area">
+              <p>No image selected</p>
+            </div>
+
+            <button
+              type="button"
+              id="uploadImageBtn"
+              class="btn btn-primary"
+              disabled
+            >
+              Upload Image
+            </button>
+          </div>
+
+          <!-- Document Upload -->
+          <div class="upload-card">
+            <div class="card-heading">
+              <div class="upload-icon file-icon">📄</div>
+              <div>
+                <h3>Upload Document</h3>
+                <p>Upload one document at a time</p>
+              </div>
+            </div>
+
+            <label for="fileInput" class="drop-area">
+              <span class="drop-icon">☁️</span>
+              <strong>Choose a document</strong>
+              <span>or click here to browse</span>
+              <small>PDF, DOC, DOCX, XLS, XLSX</small>
+              <small>PPT, PPTX, TXT</small>
+              <small>Maximum size: 1 MB</small>
+            </label>
+
+            <input
+              type="file"
+              id="fileInput"
+              accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"
+              hidden
+            />
+
+            <div id="filePreview" class="preview-area">
+              <p>No document selected</p>
+            </div>
+
+            <button
+              type="button"
+              id="uploadFileBtn"
+              class="btn btn-success"
+              disabled
+            >
+              Upload Document
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Image Gallery -->
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <h2>Image Gallery</h2>
+            <p>Your uploaded images</p>
+          </div>
+
+          <span class="item-count" id="imageCount">0 Images</span>
+        </div>
+
+        <div id="imageGallery" class="image-gallery">
+          <div class="empty-state">
+            <span>🖼️</span>
+            <p>No images uploaded yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Document List -->
+      <section class="content-section">
+        <div class="section-heading">
+          <div>
+            <h2>Documents</h2>
+            <p>Your uploaded documents</p>
+          </div>
+
+          <span class="item-count" id="fileCount">0 Files</span>
+        </div>
+
+        <div id="fileList" class="file-list">
+          <div class="empty-state">
+            <span>📂</span>
+            <p>No documents uploaded yet.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2026 FileHub. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
