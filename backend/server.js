@@ -42,13 +42,35 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+const uploadRoutes = require("./routes/uploadRoutes");
+
+// Upload API routes
+app.use("/api/uploads", uploadRoutes);
+
 // Global error handler
+
 app.use((err, req, res, next) => {
   console.error(err);
 
-  res.status(err.status || 500).json({
+  let statusCode = err.status || 500;
+  let message = err.message || "Internal Server Error.";
+
+  // Multer errors
+  if (err instanceof require("multer").MulterError) {
+    statusCode = err.code === "LIMIT_FILE_SIZE" ? 413 : 400;
+
+    if (err.code === "LIMIT_FILE_SIZE") {
+      message = "File size exceeds the allowed limit.";
+    } else if (err.code === "LIMIT_UNEXPECTED_FILE") {
+      message = "Unexpected file field or multiple files are not allowed.";
+    } else {
+      message = "File upload error.";
+    }
+  }
+
+  res.status(statusCode).json({
     success: false,
-    message: err.message || "Internal Server Error.",
+    message,
   });
 });
 
